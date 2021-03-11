@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<head th:replace="/layout :: head"></head>
+<a th:href="@{/products}">Back To List</a>
+<body>
+<h1>Form edit</h1>
+<form id="form" th:object="${product}" method="post">
+    <div>
+        <label>Name</label>
+        <input type="text" th:field="*{name}"/>
+    </div>
+    <div>
+        <label>Price</label>
+        <input type="text" th:field="*{price}"/>
+    </div>
+    <div>
+        <td>Category</td>
+        <td>
+            <select th:field="*{category}">
+                <th:block th:each="classes1:${categoryList}">
+                    <option th:value="${classes1.id}" th:text="${classes1.name}"></option>
+                </th:block>
+            </select>
+        </td>
+        <td></td>
+    </div>
+
+    <button type="submit">Edit</button>
+</form>
+</body>
+<footer th:replace="/layout :: footer"></footer>
+</html>
